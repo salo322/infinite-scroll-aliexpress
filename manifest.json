@@ -1,0 +1,35 @@
+{
+    "name": "infinite scroll aliexpress",
+    "content_scripts": [
+     {
+    "matches": [
+      "*://*.aliexpress.com/*"
+     ],
+      
+    "js": [ "./scripts/jquery.js","./scripts/content.js" ]
+     }
+   ],
+    "permissions": [ 
+     "*://*.aliexpress.com/*",
+     "storage"
+    ],
+
+    "background" : {
+    "scripts" : [
+        "./scripts/jquery.js",
+        "./scripts/background.js"]
+    },
+    "version": "1.0",
+  
+    "browser_action": {
+        "default_title": "Aliexpress infinite scroll",
+        "default_icon":"./images/infi.png"
+    },
+    "icons": {
+        "128": "./images/infi.png",
+        "48": "./images/infi.png",
+        "16": "./images/infi.png"
+      },
+    
+    "manifest_version": 2
+  }
