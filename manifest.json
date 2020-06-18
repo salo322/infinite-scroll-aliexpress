@@ -6,7 +6,7 @@
       "*://*.aliexpress.com/*"
      ],
       
-    "js": [ "./scripts/jquery.js","./scripts/content.js" ]
+    "js": [ "./scripts/jquery.js","./scripts/content.js","./scripts/component.js"]
      }
    ],
     "permissions": [ 
