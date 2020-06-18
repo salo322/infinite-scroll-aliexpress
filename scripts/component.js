@@ -1,7 +1,6 @@
 $(document).ready(function(){
-
-       
-let url = function url() {
+let url = window.location.href;      
+let getLink = function getLink(parameter) {
     let pageHref = window.location.search.substring(1).toLowerCase(),
         urlVariables = pageHref.split('&'),
         name,
@@ -9,13 +8,18 @@ let url = function url() {
 
     for (i = 0; i < urlVariables.length; i++) {
         name = urlVariables[i].split('=');
+        if (name[0] === parameter) {
+            return name[1] === undefined ? true : decodeURIComponent(name[1]);
+        }
     }
 };
-    let catId = url('catid');
-    let catName = url('catname');
-    let searchText = url('searchtext')
+
+    let catId = getLink('catid');
+    let catName = getLink('catname');
+    let searchText = getLink('searchtext');
+   
     let currentPage = $('.next-current').text();
-    let nextPage = parseInt(url('page'));
+    let nextPage = parseInt(getLink('page'));
     let requestUrl = 'https://www.aliexpress.com/glosearch/api/product?CatId=' + catId + '&SearchText=' + searchText + '&catName=' + catName + 'SortType=default&page=' + nextPage + '&isrefine=y&';
 
 
@@ -26,16 +30,11 @@ let url = function url() {
         success: function(data) {
 
            console.log(data)
+           
             nextPage++;
        
-       let items = data.items;
-       console.log(items);
-       $('ul.list-items').html( "" )
-      
-  
-           
-
-        },
+       
+       },
         error: function(error) {
             console.log("Error ", error);
         }
