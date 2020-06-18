@@ -1,27 +1,26 @@
 $(document).ready(function(){
 
        
-let getUrl = function getUrl(sParam) {
-    let sPageURL = window.location.search.substring(1)
-        .toLowerCase(),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
+let url = function url() {
+    let pageHref = window.location.search.substring(1).toLowerCase(),
+        urlVariables = pageHref.split('&'),
+        name,
         i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+    for (i = 0; i < urlVariables.length; i++) {
+        name = urlVariables[i].split('=');
     }
 };
-    let catId = getUrl('catid');
-    let catName = getUrl('catname');
-    let searchText = getUrl('searchtext')
+    let catId = url('catid');
+    let catName = url('catname');
+    let searchText = url('searchtext')
     let currentPage = $('.next-current').text();
-    let nextPage = parseInt(getUrl('page'));
-    let newUrl = 'https://www.aliexpress.com/glosearch/api/product?CatId=' + catId + '&SearchText=' + searchText + '&catName=' + catName + 'SortType=default&page=' + nextPage + '&isrefine=y&';
+    let nextPage = parseInt(url('page'));
+    let requestUrl = 'https://www.aliexpress.com/glosearch/api/product?CatId=' + catId + '&SearchText=' + searchText + '&catName=' + catName + 'SortType=default&page=' + nextPage + '&isrefine=y&';
 
 
     $.ajax({
-        url: newUrl,
+        url: requestUrl,
         type: 'GET',
         dataType:"JSON",
         success: function(data) {
@@ -31,9 +30,9 @@ let getUrl = function getUrl(sParam) {
        
        let items = data.items;
        console.log(items);
-       chrome.runtime.sendMessage({greeting: "hello",success:items});
+       $('ul.list-items').html( "" )
       
-
+  
            
 
         },
@@ -41,5 +40,4 @@ let getUrl = function getUrl(sParam) {
             console.log("Error ", error);
         }
     });
-    
 })
