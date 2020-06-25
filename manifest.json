@@ -11,7 +11,7 @@
    ],
     "permissions": [ 
      "*://*.aliexpress.com/*",
-     "storage"
+     "tabs"
     ],
 
     "background" : {
