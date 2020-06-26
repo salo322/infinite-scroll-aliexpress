@@ -15,8 +15,7 @@ $(window).on('load', function(e) {
                 i;
              for (i = 0; i < variables.length; i++) {
                 name = variables[i].split('=');
-
-                if (name[0] === sParam) {
+               if (name[0] === sParam) {
                     return name[1] === undefined ? true : decodeURIComponent(name[1]);
                 }
             }
@@ -25,14 +24,14 @@ $(window).on('load', function(e) {
                     html = document.documentElement;
                     var currentPage = Number($($('.ui-label')[0]).text().split("/")[0]); 
                             }
-                            
                     let overed = 0;
                     var searchText = getlink('searchtext');
                     let catId = getlink('catid');
                     let catName = getlink('catname');
                     let nextPage = parseInt(getlink('page'));
                     (nextPage) ? nextPage++ : nextPage = 2;
-               let point = 0;
+
+            let point = 0;
            $(window).scroll(function(event) {
             let height = $(document).height();
             let scroll = $(window).scrollTop();
