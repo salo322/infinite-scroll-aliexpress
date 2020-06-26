@@ -20,10 +20,7 @@ $(window).on('load', function(e) {
                 }
             }
         };
-               if (url) {
-                    html = document.documentElement;
-                    var currentPage = Number($($('.ui-label')[0]).text().split("/")[0]); 
-                            }
+               
                     let overed = 0;
                     var searchText = getlink('searchtext');
                     let catId = getlink('catid');
@@ -39,7 +36,7 @@ $(window).on('load', function(e) {
                   setTimeout(function() {
                       point = 0;
                         }, 2000);  }
-              if (point == 0 && overed == 0 && nextPage != currentPage) {
+              if (point == 0 && overed == 0) {
               if (scroll > 0.6 * height) {
                         point = 1;
     let requestUrl = 'https://www.aliexpress.com/glosearch/api/product?CatId=' + catId + '&SearchText=' + searchText + '&catName=' + catName + 'SortType=default&page=' + nextPage + '&isrefine=y&';
@@ -49,7 +46,6 @@ $(window).on('load', function(e) {
                                             type: 'GET',
                                             dataType: 'JSON',
                                             success: function(data) {
-                                            console.log(data.items);
                                             nextPage++;
                                         let allitems = data;
                                         if (allitems) { 
